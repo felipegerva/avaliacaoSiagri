@@ -1,6 +1,10 @@
-package br.com.avaliacaoSiagri;
+package br.com.avaliacaoSiagri.acceptance.tests;
 
-import static org.junit.Assert.*;
+import br.com.avaliacaoSiagri.utils.Navegador;
+import br.com.avaliacaoSiagri.utils.Utils;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -9,15 +13,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class ValidationTest {
+import static org.junit.Assert.assertEquals;
+
+public class SegmentoAcceptanceTest {
+    private static WebDriver driver;
+
+    @Before
+    public void setup() {
+        driver = Navegador.getInstance();
+    }
+
     @Test
     public void ct01ValidarSegmentos(){
-        System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().setSize(new Dimension(1600, 900));
-        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get("https://www.siagri.com.br");
-
         driver.findElement(By.linkText("Soluções")).click();
         driver.findElement(By.linkText("Segmentos")).click();
 
@@ -38,8 +45,10 @@ public class ValidationTest {
 
         String a6 = driver.findElement(By.className("seg-8")).getText();
         assertEquals("Outros", a6);
+    }
 
-        //Encerrar o navegador que foi aberto.
-        driver.quit();
+    @After
+    public void tearDown() {
+        Navegador.fechar();
     }
 }
