@@ -9,7 +9,7 @@ Este projeto faz parte da avaliação para o cargo de Analista de Qualidade da e
 - Maven
 - JUnit
 - Selenium (automação de testes)
-- IntelliJ IDEA
+- IntelliJ (IDE utilizada)
 
 # Pré-requisitos para a execução do projeto
 - Acessar o site da Siagri (URL: https://www.siagri.com.br);
